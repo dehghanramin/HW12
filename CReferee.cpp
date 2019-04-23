@@ -1,7 +1,11 @@
 #include "CReferee.hpp"
 #include <iomanip>
 #include <iostream>
-
+// #define NDEBUG
+#define BUFFER_SIZE 1024
+#define FREE_INPUT free(input);
+#include <cassert>
+#include <cstdlib>
 
 CReferee::CReferee(std::string const& id_, std::string const& first, std::string const& last, RefereeGrade const& grade_) :
 id(id_),
@@ -24,11 +28,11 @@ std::string CReferee::getGrade() const
 std::istream& operator>>(std::istream& ins, CReferee& obj) // Equilivant of getInfo()
 {
     obj.promptUser("ID");
-    ins >> obj.id;
+    std::getline(ins, obj.id);
     obj.promptUser("First Name");
-    ins >> obj.firstname;
+    std::getline(ins, obj.firstname);
     obj.promptUser("Last Name");
-    ins >> obj.lastname;
+    std::getline(ins, obj.lastname);
     obj.grade = obj.gradeSpinner();
     return ins;
 }
@@ -37,6 +41,7 @@ std::ostream& operator<<(std::ostream& ost, CReferee& obj)
 {
     obj.displayHeader(ost);
     obj.formattedOutput(ost);
+    return ost;
 }
 
 void CReferee::promptUser(std::string const& prompt) const
@@ -52,11 +57,14 @@ RefereeGrade CReferee::gradeSpinner() const
               << "3. STATE\n"
               << "4. NATIONAL\n"
               << "5. FIFA" << std::endl;
-    short input;
+    char* input = (char*) malloc (BUFFER_SIZE);
     std::cin >> input;
-    if (!((input > 0) && (input < 6)))
+    assert(!isNumeric(input));
+    if (!((atoi(input) > 0) && (atoi(input) < 6)))
+    {
         return gradeSpinner();
-    return convertShortToGrade(input);
+    }
+    return convertShortToGrade(atoi(input));
 }
 
 RefereeGrade CReferee::convertShortToGrade(short const& input) const
@@ -149,4 +157,14 @@ void CReferee::formattedOutput(std::ostream& ost) const
                << lastname << " |" << std::setw(12)
                << convertGradeToString() << " |" << std::endl
                << std::endl;
+}
+
+bool CReferee::isNumeric(char* const pInput) const
+{
+  for (char* pIterator = pInput; *pIterator != '\0'; ++pIterator)
+  {
+    if (isdigit(*pIterator))
+      return false;
+  }
+  return true;
 }

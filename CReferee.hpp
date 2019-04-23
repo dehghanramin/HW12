@@ -29,6 +29,7 @@ private:
     std::string insertID() const;
     std::string insertGrade() const;
     void formattedOutput(std::ostream&) const;
+    bool isNumeric(char* const) const;
 };
 
 #endif
