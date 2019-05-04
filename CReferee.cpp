@@ -1,9 +1,10 @@
+//CReferee.cpp
+//Ramin Dehghan
+
 #include "CReferee.hpp"
 #include <iomanip>
 #include <iostream>
-// #define NDEBUG
-#define BUFFER_SIZE 1024
-#define FREE_INPUT free(input);
+#define NDEBUG
 #include <cassert>
 #include <cstdlib>
 
@@ -57,7 +58,7 @@ RefereeGrade CReferee::gradeSpinner() const
               << "3. STATE\n"
               << "4. NATIONAL\n"
               << "5. FIFA" << std::endl;
-    char* input = (char*) malloc (BUFFER_SIZE);
+    char input[5];
     std::cin >> input;
     assert(!isNumeric(input));
     if (!((atoi(input) > 0) && (atoi(input) < 6)))

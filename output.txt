@@ -1,0 +1,44 @@
+Script started on Sat 27 Apr 2019 07:26:30 AM PDT
+rdehghan@hpserver:~/Documents/repos/HW12 rdehghan@hpserver HW12]$ ./main
+The default information of the first ref: 
+|--------------------------------------------------------|
+|           ID |  Fisrt Name |   Last Name |       Grade |
+|--------------------------------------------------------|
+|         R000 |        None |        None |     UNKNOWN |
+
+Please Enter ID: 1234
+Please Enter First Name: Ramin
+Please Enter Last Name: Dehghan
+	Select Grade:
+1. UNKNOWN
+2. CLUB
+3. STATE
+4. NATIONAL
+5. FIFA
+3
+The inputted information of the first ref: 
+|--------------------------------------------------------|
+|           ID |  Fisrt Name |   Last Name |       Grade |
+|--------------------------------------------------------|
+|         1234 |       Ramin |     Dehghan |       STATE |
+
+Modifying the grade to NATIONAL. 
+The referee grade is now: NATIONAL
+The initial information of the second ref: 
+|--------------------------------------------------------|
+|           ID |  Fisrt Name |   Last Name |       Grade |
+|--------------------------------------------------------|
+|        R0002 |        Arby |      Sample |        CLUB |
+
+Modifying the grade to STATE. 
+The modified grade is now: STATE
+The updated information of the second ref: 
+|--------------------------------------------------------|
+|           ID |  Fisrt Name |   Last Name |       Grade |
+|--------------------------------------------------------|
+|        R0002 |        Arby |      Sample |       STATE |
+
+rdehghan@hpserver:~/Documents/repos/HW12 rdehghan@hpserver HW12]$ exit
+exit
+
+Script done on Sat 27 Apr 2019 07:26:44 AM PDT
